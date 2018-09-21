@@ -7,7 +7,7 @@ const plugin = {
 
   },
   afterDraw: function (chart) {
-    console.log(chart)
+    // console.log(chart)
     this.drawWhiskers(chart)
   },
 
@@ -20,21 +20,21 @@ const plugin = {
 
     datasets.forEach(function (element, index, array) {
       if (element.whiskers) {
+        let datasetIndex = index
         let whiskers = element.whiskers
-
-        console.log(element)
-
         element.data.forEach(function (element, index, array) {
+        //  let dataIndex = index
           //  let barThickness = chart.getDatasetMeta(0).data[index]._view.height
-          let centerY = yAxis.getPixelForValue(whiskers[index].mean)
-          let centerX = xAxis.getPixelForTick(index)
+          console.log(chart.getDatasetMeta(datasetIndex))
+          let centerY = yAxis.getPixelForValue('NBME')
+          let centerX = xAxis.getPixelForValue(whiskers[index].mean)
           ctx.beginPath()
           ctx.strokeStyle = '#FF0000'
           ctx.fill()
           ctx.arc(centerX, centerY, 10, 0, 2 * Math.PI)
           ctx.stroke()
-          console.log(centerX)
-          console.log(centerY)
+          //    console.log('X:' + centerX)
+          //    console.log('Y:' + centerY)
         })
       }
     })
