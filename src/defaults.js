@@ -1,5 +1,8 @@
 'use strict'
 
 export default {
-  enable: false
+  enable: false,
+  color: '#A9A9A9',
+  fontFamily: 'Arial',
+  lineWidth: 2
 }
