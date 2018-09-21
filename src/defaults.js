@@ -1,5 +1,5 @@
 'use strict'
 
 export default {
-  enable: false,
+  enable: false
 }

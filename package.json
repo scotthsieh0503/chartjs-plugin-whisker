@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scotthsieh0503/chartjs-plugin-sort.git"
+    "url": "git+https://github.com/scotthsieh0503/chartjs-plugin-whisker.git"
   },
   "keywords": [
     "chartjs",
@@ -19,9 +19,9 @@
   "author": "Scott Hsieh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/scotthsieh0503/chartjs-plugin-sort/issues"
+    "url": "https://github.com/scotthsieh0503/chartjs-plugin-whisker/issues"
   },
-  "homepage": "https://github.com/scotthsieh0503/chartjs-plugin-sort#readme",
+  "homepage": "https://github.com/scotthsieh0503/chartjs-plugin-whisker#readme",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",

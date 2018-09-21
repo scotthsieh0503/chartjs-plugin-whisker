@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'chartjs-plugin-sort.js'
+    filename: 'chartjs-plugin-whisker.js'
   },
   module: {
     rules: [
