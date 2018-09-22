@@ -3,13 +3,19 @@
 const plugin = {
   id: 'whiskers',
   options: {},
-
   beforeInit: function (chart) {
     this.options = chart.chart.config.options.plugins.whiskers
   },
+  beforeLayout: function (chart) {
+    if (this.options.enable) {
+      chart.options.legend['minSize'] = { 'width': 150 }
+    }
+  },
   afterDraw: function (chart) {
-    this.drawWhiskers(chart)
-    this.drawingLegend(chart)
+    if (this.options.enable) {
+      this.drawWhiskers(chart)
+      this.drawingLegend(chart)
+    }
   },
   drawWhiskers: function (chart) {
     let ctx = chart.ctx
@@ -23,24 +29,26 @@ const plugin = {
         let datasetIndex = index
         let whiskers = element.whiskers
         element.data.forEach(function (element, index, array) {
-          let metaData = chart.getDatasetMeta(datasetIndex)
-          let barThickness = metaData.data[index]._view.height
-          let centerY = metaData.data[index]._view.y
-          let minX = xAxis.getPixelForValue(whiskers[index].min)
-          let maxX = xAxis.getPixelForValue(whiskers[index].max)
-          let centerX = xAxis.getPixelForValue(whiskers[index].mean)
+          if (whiskers[index]) {
+            let metaData = chart.getDatasetMeta(datasetIndex)
+            let barThickness = metaData.data[index]._view.height
+            let centerY = metaData.data[index]._view.y
+            let minX = xAxis.getPixelForValue(whiskers[index].min)
+            let maxX = xAxis.getPixelForValue(whiskers[index].max)
+            let centerX = xAxis.getPixelForValue(whiskers[index].center)
 
-          // Drawing drawWhiskers
-          _this.drawWhisker(ctx, minX, maxX, centerX, centerY, barThickness / 5)
+            // Drawing drawWhiskers
+            _this.drawWhisker(ctx, minX, maxX, centerX, centerY, barThickness / 5)
 
-          // drawing average labels
-          let labelX = maxX + 10
-          ctx.beginPath()
-          ctx.textBaseline = 'middle'
-          ctx.font = barThickness / 2 + 'px ' + options.fontFamily
-          ctx.fillText(whiskers[index].mean, labelX, centerY)
-          ctx.stroke()
-          ctx.fill()
+            // drawing average labels
+            let labelX = maxX + 10
+            ctx.beginPath()
+            ctx.textBaseline = 'middle'
+            ctx.font = barThickness / 2 + 'px ' + options.fontFamily
+            ctx.fillText(whiskers[index].center, labelX, centerY)
+            ctx.stroke()
+            ctx.fill()
+          }
         })
       }
     })
@@ -62,10 +70,10 @@ const plugin = {
     ctx.beginPath()
     ctx.textBaseline = 'middle'
     ctx.textAlign = 'center'
-    ctx.font = legendElementHeight * 0.75 + 'px ' + this.options.fontFamily
-    ctx.fillText('Average', legendLeft + legendWidth / 2, labelY)
-    ctx.fillText('-1 STD', legendLeft, labelY)
-    ctx.fillText('+1 STD', legendLeft + legendWidth, labelY)
+    ctx.font = legendElementHeight + 'px ' + this.options.fontFamily
+    ctx.fillText(this.options.label.center, legendLeft + legendWidth / 2, labelY)
+    ctx.fillText(this.options.label.min, legendLeft, labelY)
+    ctx.fillText(this.options.label.max, legendLeft + legendWidth, labelY)
     ctx.stroke()
     ctx.fill()
   },
