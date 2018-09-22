@@ -11,7 +11,6 @@ const plugin = {
     this.drawWhiskers(chart)
     this.drawingLegend(chart)
   },
-
   drawWhiskers: function (chart) {
     let ctx = chart.ctx
     let datasets = chart.config.data.datasets
