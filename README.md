@@ -2,10 +2,10 @@
 ChartJS plugin that allows you to draw error bar whiskers onto your existing chart
 
 
-#Install
+# Install
 npm install chartjs-plugin-whisker
 
-#Default options
+# Default options
 ```javascript
 plugins: {
   whiskers: {
@@ -22,7 +22,7 @@ plugins: {
 }
 ```
 
-#How to use 
+# How to use 
 ```javascript
 var chart = new Chart(ctx, {
     type: 'horizontalBar',
