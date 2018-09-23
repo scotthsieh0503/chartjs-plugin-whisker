@@ -24,18 +24,6 @@
               "labels":["Clerkship - Pediatrics","Clerkship - Psychiatry"]},
             options: {
                 plugins: {
-                    datalabels: {
-                        color: 'black',
-                        display: function(context) {
-                            return context.dataset.data[context.dataIndex] > 5;
-                        },
-                        font: {
-                            weight: 'normal',
-                            formatter: Math.round
-                        },
-                        align: 'end',
-                        anchor: 'end'
-                    },
                     whiskers: {
                       enable: true,
                       label: {
@@ -44,9 +32,6 @@
                         max: '+1 STD'
                       }
                     }
-                },
-                tooltips: {
-                    mode: 'label',
                 },
                 responsive: true,
                 maintainAspectRatio: true,
