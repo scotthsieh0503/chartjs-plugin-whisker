@@ -25,7 +25,7 @@ const plugin = {
     let _this = this
 
     datasets.forEach(function (element, index, array) {
-      if (element.whiskers) {
+      if (element.whiskers && !element._meta[0].hidden) {
         let datasetIndex = index
         let whiskers = element.whiskers
         element.data.forEach(function (element, index, array) {
