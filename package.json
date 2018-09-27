@@ -1,6 +1,6 @@
 {
   "name": "chartjs-plugin-whisker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ChartJS plugin that allows you to draw error bar whiskers onto your existing chart",
   "main": "index.js",
   "scripts": {

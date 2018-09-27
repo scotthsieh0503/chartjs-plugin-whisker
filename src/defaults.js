@@ -5,6 +5,7 @@ export default {
   color: '#A9A9A9',
   fontFamily: 'Arial',
   lineWidth: 2,
+  showLabel: false,
   label: {
     min: 'min',
     center: 'middle',

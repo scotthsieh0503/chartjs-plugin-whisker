@@ -41,13 +41,15 @@ const plugin = {
             _this.drawWhisker(ctx, minX, maxX, centerX, centerY, barThickness / 5)
 
             // drawing average labels
-            let labelX = maxX + 10
-            ctx.beginPath()
-            ctx.textBaseline = 'middle'
-            ctx.font = barThickness / 2 + 'px ' + options.fontFamily
-            ctx.fillText(whiskers[index].center, labelX, centerY)
-            ctx.stroke()
-            ctx.fill()
+            if (options.showLabel) {
+              let labelX = maxX + 10
+              ctx.beginPath()
+              ctx.textBaseline = 'middle'
+              ctx.font = barThickness / 2 + 'px ' + options.fontFamily
+              ctx.fillText(whiskers[index].center, labelX, centerY)
+              ctx.stroke()
+              ctx.fill()
+            }
           }
         })
       }
